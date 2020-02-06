@@ -1,0 +1,32 @@
+.city-search {
+	background-color: $bg-color-citysearch;
+	display: -webkit-flex;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	width: 100%;
+	.city-search--logo {
+		width: 250px;
+		img {
+			width: 100%;
+		}
+	}
+	.city-search--form {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 300px;
+		height: 40px;
+		padding: 5px;
+		border-bottom: 2px solid white;
+		input {
+			border: none;
+			background-color: inherit;
+			width: 100%;
+		}
+	}
+}

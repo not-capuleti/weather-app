@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class CurrentWeather extends Component {
 	render() {
-		return <div>current weather</div>;
+		const { city, country, description, temperature, feelsLike, icon, humidity, pressure, wind } = this.props;
+		return <p />;
 	}
 }
 
