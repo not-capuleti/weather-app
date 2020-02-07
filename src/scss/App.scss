@@ -3,5 +3,13 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-size: 14px;
+}
+
+body {
+	font-family: 'Quicksand', sans-serif;
+}
+
 @import "./variables/colors";
 @import "./components/citysearch";
