@@ -4,7 +4,17 @@ import Forecast from './Forecast';
 
 class Weather extends Component {
 	render() {
-		const { city, country, description, temperature, feelsLike, icon, humidity, pressure, wind } = this.props;
+		const {
+			city,
+			country,
+			description,
+			temperature,
+			feelsLike,
+			icon,
+			humidity,
+			pressure,
+			wind
+		} = this.props.location.state;
 
 		return (
 			<section>
@@ -21,6 +31,7 @@ class Weather extends Component {
 					wind={wind}
 				/>
 				<Forecast /> */}
+				<p>{city}</p>
 			</section>
 		);
 	}

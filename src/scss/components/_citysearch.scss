@@ -12,6 +12,7 @@
 	font-size: 18px;
 	&__heading {
 		font-size: 1.5em;
+		padding-bottom: 10px;
 	}
 	&__logo {
 		width: 150px;
@@ -36,11 +37,19 @@
 			width: 100%;
 			background-color: inherit;
 			font-family: inherit;
+			margin-bottom: 6px;
 		}
-		&__icon {
-			padding: 0;
-			width: 30px;
-			color: $accents-citysearch-color;
+		&__btn {
+			text-decoration: none;
+			background-color: transparent;
+			color: inherit;
+			border: none;
+			cursor: pointer;
+			&__icon {
+				padding: 0;
+				width: 30px;
+				color: $accents-citysearch-color;
+			}
 		}
 	}
 	&__location {
@@ -54,6 +63,7 @@
 			padding: 8px 0;
 		}
 		&__btn {
+			text-decoration: none;
 			background-color: transparent;
 			color: inherit;
 			font-family: inherit;
