@@ -38,6 +38,30 @@ class App extends Component {
 		});
 	}
 
+	getCurrentWeatherByGeo = () => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition((position) => {
+				fetch(
+					`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position
+						.coords.longitude}&appid=${API_KEY}&units=metric`
+				)
+					.then((weatherNow) => {
+						if (weatherNow.ok) {
+							return weatherNow.json();
+						} else {
+							return Promise.reject(weatherNow);
+						}
+					})
+					.then((weatherNow) => {
+						this.showCurrentWeather(weatherNow);
+					})
+					.catch((error) => {
+						alert(`Geolocation not supported. Please search by city name.`);
+					});
+			});
+		}
+	};
+
 	getCurrentWeatherByCity = (e) => {
 		e.preventDefault();
 		const city = e.target.elements.city.value;
@@ -51,7 +75,6 @@ class App extends Component {
 			})
 			.then((weatherNow) => this.showCurrentWeather(weatherNow))
 			.catch((error) => {
-				console.log(error);
 				alert(`I can't find this city. Try again or use your location!`);
 			});
 	};
@@ -82,7 +105,6 @@ class App extends Component {
 					humidity={humidity}
 					pressure={pressure}
 					wind={wind}
-					data={this.state.data}
 				/>
 			);
 		}
@@ -107,7 +129,7 @@ class App extends Component {
 				</form>
 				<div className="city-search__location">
 					<p className="city-search__location__text">or</p>
-					<button onClick={this.getWeatherByGeolocation} className="city-search__location__btn">
+					<button onClick={this.getCurrentWeatherByGeo} className="city-search__location__btn">
 						Use your location
 						<FontAwesomeIcon className="city-search__location__btn__icon" icon={faGlobeEurope} />
 					</button>
