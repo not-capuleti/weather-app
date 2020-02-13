@@ -1,0 +1,43 @@
+.weather {
+	background-color: $bg-color-weather;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	align-items: center;
+	&__current {
+		display: flex;
+		position: relative;
+		justify-content: space-evenly;
+		width: 90%;
+		height: 50vh;
+		color: $text-color-weather;
+		text-align: center;
+		&--main {
+			height: 90%;
+			width: 50%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			border: 1px solid $accents-weather-color;
+			border-radius: 8px;
+			margin-right: 10px;
+		}
+		&--details {
+			position: static;
+			height: 90%;
+			width: 50%;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-evenly;
+			border: 1px solid $accents-weather-color;
+			border-radius: 8px;
+			margin-left: 10px;
+		}
+	}
+	&__forecast {
+		width: 90%;
+		height: 30vh;
+		display: flex;
+		justify-content: space-between;
+	}
+}
