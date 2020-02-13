@@ -22,7 +22,7 @@ class App extends Component {
 		isSubmitted: false
 	};
 
-	showCurrentWeather(data) {
+	showCurrentWeather = (data) => {
 		this.setState({
 			city: data.name,
 			country: data.sys.country,
@@ -36,7 +36,7 @@ class App extends Component {
 			wind: `${(data.wind.speed * 3, 6)} km/h`,
 			isSubmitted: true
 		});
-	}
+	};
 
 	getCurrentWeatherByGeo = () => {
 		if (navigator.geolocation) {
@@ -75,7 +75,7 @@ class App extends Component {
 			})
 			.then((weatherNow) => this.showCurrentWeather(weatherNow))
 			.catch((error) => {
-				alert(`I can't find this city. Try again or use your location!`);
+				alert(`I can't find this city. Try again or use your location.`);
 			});
 	};
 
