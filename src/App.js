@@ -14,7 +14,6 @@ class App extends Component {
 		country: null,
 		description: null,
 		temperature: null,
-		feelsLike: null,
 		icon: null,
 		humidity: null,
 		pressure: null,
@@ -29,10 +28,9 @@ class App extends Component {
 			description: data.weather[0].description,
 			temperature: Math.floor(data.main.temp),
 			// temperatureF: Math.round(data.main.temp * 1.8 + 32),
-			feelsLike: Math.floor(data.main.feels_like),
 			icon: data.weather[0].icon,
-			humidity: data.main.humidity,
-			pressure: data.main.pressure,
+			humidity: `${data.main.humidity} %`,
+			pressure: `${data.main.pressure} hPa`,
 			wind: `${(data.wind.speed * 3, 6)} km/h`,
 			isSubmitted: true
 		});
@@ -80,18 +78,7 @@ class App extends Component {
 	};
 
 	render() {
-		const {
-			isSubmitted,
-			city,
-			country,
-			description,
-			temperature,
-			feelsLike,
-			icon,
-			humidity,
-			pressure,
-			wind
-		} = this.state;
+		const { isSubmitted, city, country, description, temperature, icon, humidity, pressure, wind } = this.state;
 
 		if (isSubmitted) {
 			return (
@@ -100,7 +87,6 @@ class App extends Component {
 					country={country}
 					description={description}
 					temperature={temperature}
-					feelsLike={feelsLike}
 					icon={icon}
 					humidity={humidity}
 					pressure={pressure}

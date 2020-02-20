@@ -8,8 +8,9 @@
 		display: flex;
 		position: relative;
 		justify-content: space-evenly;
+		align-items: center;
 		width: 90%;
-		height: 50vh;
+		height: 70vh;
 		color: $text-color-weather;
 		text-align: center;
 		&--main {
@@ -17,21 +18,58 @@
 			width: 50%;
 			display: flex;
 			flex-direction: column;
-			justify-content: space-between;
+			// justify-content: space-between;
 			border: 1px solid $accents-weather-color;
 			border-radius: 8px;
 			margin-right: 10px;
+			img {
+				width: 15%;
+				height: auto;
+			}
+			&-city {
+				font-size: 2em;
+				font-weight: 300;
+			}
+			&-country {
+				font-weight: 300;
+			}
+			&-temperature {
+				font-size: 4em;
+				font-weight: 300;
+			}
+			&-description {
+				font-size: 1.5em;
+			}
 		}
 		&--details {
-			position: static;
 			height: 90%;
 			width: 50%;
 			flex-direction: column;
 			align-items: center;
-			justify-content: space-evenly;
 			border: 1px solid $accents-weather-color;
 			border-radius: 8px;
 			margin-left: 10px;
+			position: relative;
+			&-title {
+				font-size: 1.5em;
+				line-height: 2;
+				border-bottom: 1px solid $accents-weather-color;
+				text-align: center;
+				margin: 0 40px;
+			}
+			&-info {
+				height: 85%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				font-size: 1.3em;
+				&-cell {
+					img {
+						width: 40px;
+						height: auto;
+					}
+				}
+			}
 		}
 	}
 	&__forecast {
