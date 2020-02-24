@@ -10,47 +10,33 @@ class Weather extends Component {
 	};
 
 	setIcon = (id) => {
-		switch (id) {
-			case id > 199:
-				return 'Thunderstorm';
-				break;
-			case id > 299 && id < 400:
-				return 'Drizzle';
-				break;
-			case id > 499:
-				return 'Rain';
-				break;
-			case id > 599:
-				return 'Snow';
-				break;
-			case id > 700:
-				return 'Mist haze tornado ash';
-				break;
-			case id === 800:
-				return 'Clear sky';
-				break;
-			case id === 801:
-				return 'few clouds: 11-25%';
-				break;
-			case id === 802:
-				return 'scattered clouds: 25-50%';
-				break;
-			case id === 803:
-				return 'broken clouds: 51-84%';
-				break;
-			case id === 804:
-				return 'overcast clouds: 85-100%';
-				break;
-			default:
-				return 'some sky';
-				break;
+		if (id === 803 || id === 804) {
+			return '/images/moreClouds.png';
+		} else if (id === 801 || id === 802) {
+			return '/images/fewClouds.png';
+		} else if (id === 800) {
+			return '/images/sun.png';
+		} else if (id === 781) {
+			return '/images/tornado.png';
+		} else if (id === 771) {
+			return '/images/whirl.png';
+		} else if (id > 700 && id < 763) {
+			return '/images/mist.png';
+		} else if (id > 599) {
+			return '/images/snow.png';
+		} else if (id > 299 && id > 499) {
+			return '/images/rain.png';
+		} else if (id > 199) {
+			return '/images/thunder.png';
+		} else {
+			return '/images/fewClouds.png';
 		}
 	};
 
 	get5dayForecast = () => {
 		const { city } = this.props;
 
-		fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}`)
+		fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
 			.then((forecast) => {
 				if (forecast.ok) {
 					return forecast.json();
@@ -72,22 +58,24 @@ class Weather extends Component {
 	}
 
 	render() {
-		const { city, country, description, temperature, icon, humidity, pressure, wind } = this.props;
+		const { city, country, description, temperature, feelsLike, id, humidity, pressure, wind } = this.props;
 		const { forecast5days } = this.state;
 
 		return (
 			<div className="weather">
 				<CurrentWeather
+					setIcon={this.setIcon}
 					city={city}
 					country={country}
 					description={description}
 					temperature={temperature}
-					icon={icon}
+					feelsLike={feelsLike}
+					id={id}
 					humidity={humidity}
 					pressure={pressure}
 					wind={wind}
 				/>
-				<Forecast forecast5days={forecast5days} />
+				<Forecast setIcon={this.setIcon} forecast5days={forecast5days} />
 			</div>
 		);
 	}
