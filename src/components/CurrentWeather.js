@@ -25,21 +25,27 @@ class CurrentWeather extends Component {
 					<h2 className="weather__current--main-city">{city.toUpperCase()}</h2>
 					<h3 className="weather__current--main-country">{country}</h3>
 					<img className="weather__current--main-icon" alt="" src={setIcon(id)} />
-					<p className="weather__current--main-temperature">{temperature + `\u00B0`} </p>
+					<p className="weather__current--main-temperature">{temperature + `\u00B0`}</p>
 					<p className="weather__current--main-description">{description}</p>
 				</section>
 				<section className="weather__current--details">
 					<div className="weather__current--details-cell">
 						<img className="weather__current--details-cell-icon" src={humidityIcon} alt="humidity icon" />
-						<p>Humidity: {humidity}</p>
+						<p>
+							Humidity: {'\n'} {humidity}
+						</p>
 					</div>
 					<div className="weather__current--details-cell">
 						<img className="weather__current--details-cell-icon" src={windIcon} alt="wind icon" />
-						<p>Wind: {wind}</p>
+						<p>
+							Wind: {'\n'} {wind}
+						</p>
 					</div>
 					<div className="weather__current--details-cell">
 						<img className="weather__current--details-cell-icon" src={pressureIcon} alt="pressure icon" />
-						<p>Pressure: {pressure}</p>
+						<p>
+							Pressure: {'\n'} {pressure}
+						</p>
 					</div>
 					<div className="weather__current--details-cell">
 						<img
@@ -47,7 +53,9 @@ class CurrentWeather extends Component {
 							src={feelsLikeIcon}
 							alt="temperature icon"
 						/>
-						<p>Feels like: {feelsLike.toFixed(1) + `\u00B0`}</p>
+						<p>
+							Feels like: {'\n'} {feelsLike.toFixed(1) + `\u00B0`}
+						</p>
 					</div>
 				</section>
 			</div>

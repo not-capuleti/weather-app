@@ -46,7 +46,6 @@ class Weather extends Component {
 			})
 			.then((forecast) => {
 				this.setState({ forecast5days: forecast.list });
-				console.log(this.state.forecast5days);
 			})
 			.catch((error) => {
 				console.log(error);
