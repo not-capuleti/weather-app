@@ -36,7 +36,7 @@ class Weather extends Component {
 	get5dayForecast = () => {
 		const { city } = this.props;
 
-		fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
+		fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
 			.then((forecast) => {
 				if (forecast.ok) {
 					return forecast.json();

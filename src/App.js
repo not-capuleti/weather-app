@@ -30,7 +30,6 @@ class App extends Component {
 			temperature: Math.floor(data.main.temp),
 			feelsLike: data.main.feels_like,
 			id: data.weather[0].id,
-			// temperatureF: Math.round(data.main.temp * 1.8 + 32),
 			humidity: `${data.main.humidity}%`,
 			pressure: `${data.main.pressure} hPa`,
 			wind: `${(data.wind.speed * 3, 6)} km/h`,
@@ -65,7 +64,7 @@ class App extends Component {
 	getCurrentWeatherByCity = (e) => {
 		e.preventDefault();
 		const city = e.target.elements.city.value;
-		fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
+		fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`)
 			.then((weatherNow) => {
 				if (weatherNow.ok) {
 					return weatherNow.json();
