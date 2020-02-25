@@ -12,5 +12,6 @@ body {
 }
 
 @import "./variables/colors";
+@import "./mixins/breakpoints";
 @import "./citysearch";
 @import "./weather";

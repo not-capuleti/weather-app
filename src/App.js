@@ -15,28 +15,28 @@ class App extends Component {
 		description: null,
 		temperature: null,
 		feelsLike: null,
-		icon: null,
+		id: null,
 		humidity: null,
 		pressure: null,
 		wind: null,
 		isSubmitted: false
 	};
 
-	showCurrentWeather(data) {
+	showCurrentWeather = (data) => {
 		this.setState({
 			city: data.name,
 			country: data.sys.country,
 			description: data.weather[0].description,
 			temperature: Math.floor(data.main.temp),
+			feelsLike: data.main.feels_like,
+			id: data.weather[0].id,
 			// temperatureF: Math.round(data.main.temp * 1.8 + 32),
-			feelsLike: Math.floor(data.main.feels_like),
-			icon: data.weather[0].icon,
-			humidity: data.main.humidity,
-			pressure: data.main.pressure,
+			humidity: `${data.main.humidity}%`,
+			pressure: `${data.main.pressure} hPa`,
 			wind: `${(data.wind.speed * 3, 6)} km/h`,
 			isSubmitted: true
 		});
-	}
+	};
 
 	getCurrentWeatherByGeo = () => {
 		if (navigator.geolocation) {
@@ -75,7 +75,7 @@ class App extends Component {
 			})
 			.then((weatherNow) => this.showCurrentWeather(weatherNow))
 			.catch((error) => {
-				alert(`I can't find this city. Try again or use your location!`);
+				alert(`I can't find this city. Try again or use your location.`);
 			});
 	};
 
@@ -87,7 +87,7 @@ class App extends Component {
 			description,
 			temperature,
 			feelsLike,
-			icon,
+			id,
 			humidity,
 			pressure,
 			wind
@@ -101,7 +101,7 @@ class App extends Component {
 					description={description}
 					temperature={temperature}
 					feelsLike={feelsLike}
-					icon={icon}
+					id={id}
 					humidity={humidity}
 					pressure={pressure}
 					wind={wind}
